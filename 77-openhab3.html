@@ -1,7 +1,7 @@
 <!--
 
   openHAB nodes for IBM's Node-Red
-  https://github.com/pdmangel/node-red-contrib-openhab2
+  https://github.com/pdmangel/node-red-contrib-openhab3
   (c) 2017, Peter De Mangelaere <peter.demangelaere@gmail.com>
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
   limitations under the License.
 
 -->
-<script type="text/x-red" data-template-name="openhab2-controller">
+<script type="text/x-red" data-template-name="openhab3-controller">
     <div class="form-row">
         <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-config-input-name" placeholder="Name">
@@ -52,7 +52,7 @@
 
 </script>
 
-<script type="text/x-red" data-template-name="openhab2-in">
+<script type="text/x-red" data-template-name="openhab3-in">
     <style type="text/css">
         .btn-group {
             width: 70%;
@@ -100,7 +100,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-template-name="openhab2-get">
+<script type="text/x-red" data-template-name="openhab3-get">
     <style type="text/css">
         .btn-group {
             width: 70%;
@@ -148,7 +148,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-template-name="openhab2-monitor">
+<script type="text/x-red" data-template-name="openhab3-monitor">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -159,7 +159,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-template-name="openhab2-out">
+<script type="text/x-red" data-template-name="openhab3-out">
     <style type="text/css">
         .btn-group {
             width: 70%;
@@ -219,7 +219,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-template-name="openhab2-events">
+<script type="text/x-red" data-template-name="openhab3-events">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -230,7 +230,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="openhab2-controller">
+<script type="text/x-red" data-help-name="openhab3-controller">
     <p>Configuration node for communication with an openHAB controller.</p>
 	<p></p>
 	<b>Configuration</b>
@@ -245,7 +245,7 @@
    	 </ul>
 </script>
 
-<script type="text/x-red" data-help-name="openhab2-in">
+<script type="text/x-red" data-help-name="openhab3-in">
     <p>Listens to state changes of a selected openHAB Item.</p>
 	<p></p>
 	<b>Configuration</b>
@@ -276,7 +276,7 @@
    	 </ul>
 </script>
 
-<script type="text/x-red" data-help-name="openhab2-get">
+<script type="text/x-red" data-help-name="openhab3-get">
     <p>Gets an openHAB Item on an input message.</p>
 	<p></p>
 	<b>Configuration</b>
@@ -295,8 +295,8 @@
   	</ul>
 </script>
 
-<script type="text/x-red" data-help-name="openhab2-monitor">
-    <p>Monitors the openhab2-controller node.</p>
+<script type="text/x-red" data-help-name="openhab3-monitor">
+    <p>Monitors the openhab3-controller node.</p>
 	<p></p>
 	<b>Configuration</b>
     <ul>
@@ -336,7 +336,7 @@
 </script>
 
 
-<script type="text/x-red" data-help-name="openhab2-out">
+<script type="text/x-red" data-help-name="openhab3-out">
     <p>Sends commands or state updates to a selected openHAB Item.</p>
     <p>E.g. "ON", "OFF", "REFRESH", ... </p>
 	<p></p>
@@ -364,7 +364,7 @@
 
 </script>
 
-<script type="text/x-red" data-help-name="openhab2-events">
+<script type="text/x-red" data-help-name="openhab3-events">
     <p>Watches the event bus.</p>
 	<p></p>
 	<b>Configuration</b>
@@ -377,7 +377,7 @@
 
 
 <script type="text/javascript">
-	RED.nodes.registerType('openhab2-controller', {
+	RED.nodes.registerType('openhab3-controller', {
 		category: 'config',
 		defaults: {
 			name: {value:"",required:true},
@@ -388,7 +388,7 @@
 		    username: {value:"", required:false},
 		    password:  {value:"", required:false}
         },
-        paletteLabel: "openhab2-controller",
+        paletteLabel: "openhab3-controller",
 		label: function() {
 			return this.name;
 		}
@@ -397,7 +397,7 @@
 
 
 <script type="text/javascript">
-	// some code chared by openhab2-in and openhab2-out
+	// some code chared by openhab3-in and openhab3-out
 
 	function openhabEditPrepare(node, allowEmpty) {
 
@@ -425,7 +425,7 @@
            			password: cntrlConfig.password
             	}
             	console.log("config = " + JSON.stringify(config));
-                $.getJSON("openhab2/items", config)
+                $.getJSON("openhab3/items", config)
                   .done( function(data) {
 
                 	 itemSelectionEl.children().remove();
@@ -470,21 +470,21 @@
 
 <script type="text/javascript">
     $.getScript('static/js/bootstrap-multiselect.js');
-    RED.nodes.registerType('openhab2-in', {
+    RED.nodes.registerType('openhab3-in', {
         category: 'home automation',
         color: '#00cc00',
         defaults: {
             name:      {value:""},
-		    controller:  {value:"", type:"openhab2-controller", required:true},
+		    controller:  {value:"", type:"openhab3-controller", required:true},
 		    itemname:  {value:"", required:true},
         },
         inputs: 0,
         outputs: 2,
-        icon: "node-red-contrib-openhab2.png",
-        paletteLabel: "openhab2-in",
+        icon: "node-red-contrib-openhab3.png",
+        paletteLabel: "openhab3-in",
         label: function() {
 
-            return(this.name||this.itemname||"openhab2 in");
+            return(this.name||this.itemname||"openhab3 in");
         },
         oneditprepare: function() {
         	openhabEditPrepare(this, false);
@@ -493,21 +493,21 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('openhab2-get',{
+    RED.nodes.registerType('openhab3-get',{
         category: 'home automation',
         color: '#00cc00',
         defaults: {
             name:      {value:""},
-		    controller:  {value:"", type:"openhab2-controller", required:true},
+		    controller:  {value:"", type:"openhab3-controller", required:true},
 		    itemname:  {value:"", required:false},
         },
         inputs: 1,
         outputs: 1,
-        icon: "node-red-contrib-openhab2.png",
-        paletteLabel: "openhab2-get",
+        icon: "node-red-contrib-openhab3.png",
+        paletteLabel: "openhab3-get",
         label: function() {
 
-            return(this.name||this.itemname||"openhab2 get");
+            return(this.name||this.itemname||"openhab3 get");
         },
         oneditprepare: function() {
         	openhabEditPrepare(this, true);
@@ -516,20 +516,20 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('openhab2-monitor',{
+    RED.nodes.registerType('openhab3-monitor',{
         category: 'home automation',
         color: '#00cc00',
         defaults: {
             name:      {value:""},
-		    controller:  {value:"", type:"openhab2-controller", required:true}
+		    controller:  {value:"", type:"openhab3-controller", required:true}
         },
         inputs: 0,
         outputs: 3,
-        icon: "node-red-contrib-openhab2.png",
-        paletteLabel: "openhab2-monitor",
+        icon: "node-red-contrib-openhab3.png",
+        paletteLabel: "openhab3-monitor",
         label: function() {
 
-            return(this.name||"openhab2 monitor");
+            return(this.name||"openhab3 monitor");
         },
         oneditprepare: function() {
         }
@@ -537,22 +537,22 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('openhab2-out',{
+    RED.nodes.registerType('openhab3-out',{
         category: 'home automation',
         color: '#00cc00',
         defaults: {
             name:      {value:""},
-		    controller:  {value:"", type:"openhab2-controller", required:true},
+		    controller:  {value:"", type:"openhab3-controller", required:true},
 		    itemname:  {value:"", required:false},
 		    topic: {value:"", required:false},
 		    payload:  {value:"", required:false}
 		},
         inputs: 1,
         outputs: 1,
-        icon: "node-red-contrib-openhab2.png",
-        paletteLabel: "openhab2-out",
+        icon: "node-red-contrib-openhab3.png",
+        paletteLabel: "openhab3-out",
         label: function() {
-            return(this.name||this.itemname||"openhab2 out");
+            return(this.name||this.itemname||"openhab3 out");
         },
         oneditprepare: function() {
         	openhabEditPrepare(this, true);
@@ -561,21 +561,21 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('openhab2-events',{
+    RED.nodes.registerType('openhab3-events',{
         category: 'home automation',
         color: '#0fdd0f',
         defaults: {
             name:      {value:""},
-		    controller:  {value:"", type:"openhab2-controller", required:true},
+		    controller:  {value:"", type:"openhab3-controller", required:true},
 		    itemname:  {value:"", required:false},
         },
         inputs: 0,
         outputs: 1,
-        icon: "node-red-contrib-openhab2.png",
-        paletteLabel: "openhab2-events",
+        icon: "node-red-contrib-openhab3.png",
+        paletteLabel: "openhab3-events",
         label: function() {
 
-            return(this.name||this.itemname||"openhab2 events");
+            return(this.name||this.itemname||"openhab3 events");
         },
         oneditprepare: function() {
         	//openhabEditPrepare(this, true);

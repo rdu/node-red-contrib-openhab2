@@ -1,26 +1,26 @@
 {
-  "name": "node-red-contrib-openhab2",
-  "version": "1.1.7",
+  "name": "node-red-contrib-openhab3",
+  "version": "0.1.7",
   "description": "openhab home automation for node-red",
   "dependencies": {
     "@joeybaker/eventsource": "latest",
     "bootstrap-multiselect": "^0.9.13-1",
     "request": "latest"
   },
-  "author": "Peter De Mangelaere <peter.demangelaere@gmail.com>",
+  "author": "Peter De Mangelaere <peter.demangelaere@gmail.com>, Ronny Dudeck <info@netf.de>",
   "keywords": [
-    "node-red", "openhab2"
+    "node-red", "openhab3"
   ],
   "node-red": {
     "nodes": {
-      "openhab2": "77-openhab2.js"
+      "openhab3": "77-openhab3.js"
     }
   },
   "scripts": {
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pdmangel/node-red-contrib-openhab2.git"
+    "url": "git+https://github.com/rdu/node-red-contrib-openhab2"
   },
   "license": "Apache-2.0"
 }
